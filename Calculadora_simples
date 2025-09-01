@@ -1,10 +1,19 @@
 import tkinter as tk
 
+def calcular_resultado():
+    valor_atual = entry.get()
+    novo_valor = eval(valor_atual)
+    limpar_entrada()
+    entry.insert(0, novo_valor)
+
+def limpar_entrada():
+    entry.delete(0, tk.END)
+
 def adicionar_valor(valor):
     valor_atual = entry.get()
-    novo_valor = valor + valor_atual
+    novo_valor = valor_atual + valor
 
-    entry.delete(0, tk.END)
+    limpar_entrada()
     entry.insert(0, novo_valor)
 
 # Projeto inacabado
@@ -31,10 +40,20 @@ frame_2.pack(expand=True, fill='both')
 frame_3 = tk.Frame(root)
 frame_3 .pack(expand=True, fill='both')
 
-# Botões
-mais = tk.Button(frame_ope, text='test')
+# Botões de operacao
+mais = tk.Button(frame_ope, text='+', font=('verdana', 20), command=lambda: adicionar_valor('+'))
 mais.pack(expand=True, fill='both')
 
+menos = tk.Button(frame_ope, text='-', font=('verdana', 20), command=lambda: adicionar_valor('-'))
+menos.pack(expand=True, fill='both')
+
+divi = tk.Button(frame_ope, text='/', font=('verdana', 20), command=lambda: adicionar_valor('/'))
+divi.pack(expand=True, fill='both')
+
+mult = tk.Button(frame_ope, text='*', font=('verdana', 20), command=lambda: adicionar_valor('*'))
+mult.pack(expand=True, fill='both')
+
+# Botoes de numeros
 entry = tk.Entry(frame_entry, font=('verdana', 35))
 entry.pack(side='left', expand=True, fill='both')
 
@@ -68,10 +87,10 @@ button9.pack(side = 'left',expand=True, fill='both')
 button_ = tk.Button(frame_3, text='0', font=('verdana', 20), command=lambda: adicionar_valor('0'))
 button_.pack(side = 'left',expand=True, fill='both')
 
-button_ = tk.Button(root, text='c', font=('verdana', 20))
+button_ = tk.Button(root, text='c', font=('verdana', 20), command=limpar_entrada)
 button_.pack(side = 'left',expand=True, fill='both')
 
-button_ = tk.Button(root, text='=', font=('verdana', 20))
+button_ = tk.Button(root, text='=', font=('verdana', 20), command=calcular_resultado)
 button_.pack(side = 'left',expand=True, fill='both')
 
 #Tela principal
