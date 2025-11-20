@@ -37,6 +37,17 @@ void inserirInicio(No **lista, int valor){
     *lista = novoNo;
 }
 
+void *inserirFim(No **lista, int valor){
+    No *novoNo;
+    criarNo(&novoNo, valor);
+    if(!(*lista)){
+        *lista = novoNo;
+    }else{
+        No *aux = *lista;
+        
+    }
+}
+
 int main() {
     No *lista = NULL;
     inserirInicio(&lista, 4);
